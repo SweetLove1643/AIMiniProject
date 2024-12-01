@@ -9,7 +9,6 @@ import os
 
 cost_regular = 1.0
 cost_diagonal = 1.4
-
 COSTS = {
     "up": cost_regular,
     "down": cost_regular,
