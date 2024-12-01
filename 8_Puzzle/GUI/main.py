@@ -356,67 +356,6 @@ def getEuclideanDistance(state):
         tot += math.sqrt(pow((goalX - itemX), 2) + pow((goalY - itemY), 2))
     return tot
 
-'''
-def AStarSearch_manhattan(inputState):
-    # generating start states of variables and data structures used in the algorithm
-    start_time = time.time()
-    integer_state = int(inputState)
-    heap = []
-    explored = {}
-    parent = {}
-    cost_map = {}
-    heapq.heappush(heap, (getManhattanDistance(inputState), integer_state))
-    cost_map[integer_state] = getManhattanDistance(inputState)
-    heap_map = {}
-    heap_map[integer_state] = 1
-    global manhattan_counter
-    global manhattan_path
-    global manhattan_cost
-    global manhattan_depth
-    global time_manhattan
-    manhattan_depth = 0
-    while heap:
-        node = heapq.heappop(heap)
-        state = node[1]
-        string_state = getStringRepresentation(state)
-        parent_cost = node[0] - getManhattanDistance(string_state)
-        # handling the nodes that was renewed
-        if not state in explored:
-            manhattan_depth = max(parent_cost, manhattan_depth)
-        explored[state] = 1
-
-        if goalTest(state):
-            path = getPath(parent, int(inputState))
-            # printPath(path)
-            manhattan_path = path
-            manhattan_counter = (len(explored))
-            manhattan_cost = len(path) - 1
-            time_manhattan = float(time.time() - start_time)
-
-            return 1
-
-        # generating childeren
-        children = getChildren(string_state)
-        for child in children:
-            new_cost = getManhattanDistance(child)
-            child_int = int(child)
-            if child_int not in explored and child not in heap_map:
-                heapq.heappush(heap, (parent_cost + new_cost + 1, child_int))
-                heap_map[child_int] = 1
-                cost_map[child_int] = parent_cost + new_cost + 1
-                parent[child_int] = state
-            elif child_int in heap_map:
-                if (new_cost + parent_cost + 1) < cost_map[child_int]:
-                    parent[child_int] = state
-                    cost_map[child_int] = new_cost + parent_cost + 1
-                    heapq.heappush(heap, (parent_cost + 1 + new_cost, child_int))
-    manhattan_cost = 0
-    manhattan_path = []
-    manhattan_counter = (len(explored))
-    time_manhattan = float(time.time() - start_time)
-
-    return 
-'''
 
 
 def GreedyManhattan(inputState):
@@ -560,7 +499,7 @@ def hillClimbingWithRandomRestart(inputState, max_restarts=1000):
             inputState = ''.join(inputList)
 
     return 0  # No solution found after multiple restarts
-# ... (your existing code)
+
 
 
 def AStarSearch_euclid(inputState):
@@ -622,19 +561,3 @@ def AStarSearch_euclid(inputState):
 
     return 0
 
-# start_time=time.time()
-# for i in range(0,10000):
-#     print(1)
-# print(start_time-time.time())
-
-# print(DFS("702853641"))
-# print(time_dfs)
-# print(BFS("702853641"))
-# print(time_bfs)
-# print(AStarSearch_euclid("702853641"))
-# print(time_euclid)
-# print(AStarSearch_manhattan("702853641"))
-# print(time_manhattan)
-
-
-# unsolvable 103245678, 702853641
